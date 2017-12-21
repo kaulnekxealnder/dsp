@@ -98,7 +98,7 @@ Make a cheat sheet for yourself: a list of at least **ten** commands and what th
 
 ### Q2.  List Files in Unix   
 
-What do the following commands do (note these differ from Linux and Mac):  
+What do the following commands do (note these differ from Linux and Mac):
 
 > >
 `ls`: list files/directories in the current directory  
