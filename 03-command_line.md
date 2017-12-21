@@ -99,9 +99,10 @@ Make a cheat sheet for yourself: a list of at least **ten** commands and what th
 ### Q2.  List Files in Unix   
 
 What do the following commands do (note these differ from Linux and Mac):  
-> >  
+
+> >
 `ls`: list files/directories in the current directory  
-`ls -a`: list files/directories (a)ll options - so gets hidden files - in current directory    
+`ls -a`: list files/directories (a)ll options - so gets hidden files - in current directory  
 `ls -l`: list files/directories (l)ong - returns a long list, with each file/dir on a new line and extended information  
 `ls -lh`: list files/directories (l)ong (h)uman-readable (honestly with long options I don't think it does anything except turn the file size column into something truncating the 000's - returns a long list, with each file/dir on a new line and extended information    
 `ls -lah`: list files/directories (l)ong (a)ll (h)uman-readable - just use ls -al.....   
