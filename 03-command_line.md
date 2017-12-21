@@ -20,8 +20,7 @@ Here's a list of items with which you should be familiar:
 
 Make a cheat sheet for yourself: a list of at least **ten** commands and what they do.  (Use the 8 items above and add a couple of your own.)  
 
-> > List of Command Line Commands:  
----
+> > **List of Command Line Commands:**  
 pwd (or $PWD, or =+) - prints working directory (which is the current directory you are in)  
 mkdir (-p is useful) - makes new empty directory of your name choice (-p will make parent and children - can nest down)  
 rmdir - removes empty directories -rarely like using this (although dangerous rm -r works)  
@@ -108,8 +107,7 @@ What do the following commands do:
 `ls -t`  
 `ls -Glp`  
 
-> > What do these list directory commands do with their arguments: (*note these differ from Linux and Mac)
----
+> > **What do these list directory commands do with their arguments: (*note these differ from Linux and Mac)**
 ls 		: list files/directories in the current directory  
 ls -a  	: list files/directories (a)ll options - so gets hidden files - in current directory  
 ls -l  	: list files/directories (l)ong - returns a long list, with each file/dir on a new line and extended information  
@@ -118,14 +116,14 @@ ls -lah : list files/directories (l)ong (a)ll (h)uman-readable - just use ls -al
 ls -t  	: list files/directories (t)ime modified - newest on top  
 ls -Glp	: list files/directories (G)(CLIColor Enabled) (l)ong (p)(path extensions further down get an end appended slash (/))  
 ls -Glp	: list files/directories (G)roup-removal (l)ong (p)(path extensions further down get an end appended slash (/))  
+
 ---
 
 ### Q3.  More List Files in Unix  
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-> > More Listing: (as a note, I really don't like ever listing without the (l)ong argument - and generally write them into aliases)  
----
+> > **More Listing: (as a note, I really don't like ever listing without the (l)ong argument - and generally write them into aliases)**  
 ls -r: list files/directories (r)everse alphabetical  
 ls -al | grep '^d' : list files/directories directories only  
 ls -i: list files/directories i(node)  
@@ -134,21 +132,25 @@ ls -Q: list files/directories (Q)uote names in ""
 ls -R: list files/directories (R)ecursively - going to be a big LS depending where you are in a filesystem  
 ls -s: list files/directories (s)ize  
 ls -1: list files/directories (1) file per line - good if you want a vertical list of some other combination of the hierarchy  
+
 ---
 
 ### Q4.  Xargs   
 What does `xargs` do? Give an example of how to use it.
 
-> > xargs:  
----
+> > **xargs:**  
 Builds and execute command lines from standard input - essentially a utility for building an execution pipeline from stdin - executes /bin/echo over input.  
 It is basically used to do some operations on a long(ish!?) list of filenames produced by the previous command(s).  
 If run empty on CLI will need to be executed with ctrl+d, can handle delimiters with -d, number of lines to split -n, and ask for user confirmation -p  
 Mostly useful with CLI commands that accept standard input (grep, awk, find, echo)  
-examples:
+
 ---
+
+> > **examples:**
 echo a b c d | xargs -p # just going to echo a b c d if prompted by user  
 find . -name "*.py" | xargs rm -rf # find files in current directory and its subdirectories ending in .py and loop over removing them  
 find ./foo -type f -name "*.txt" | xargs rm # find files in current directories child foo and under ending in .txt and loop over removing them  
 find . -type f -name "*.md" | xargs wc -m -l # find files in current directory and its subdirectories that are a file and named ending in .md and loop over returning number of lines in each file, number of characters in each file and filename  
 find . -type f -name "*.md" | xargs grep "boom" find files in current directory and its subdirectories that are files with name ending in .md and search them for a match to word "boom" returning file name and the line(s) containing boom  
+
+---
