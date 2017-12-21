@@ -49,7 +49,9 @@ However, this is completely optional as Anaconda is an all-in-one package manage
 
 Did you install Python 2 or 3? Why?  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> Lenovo Ideapad: Dualboot Windows/Linux Ubuntu 16.04: Both Python2 and 3 
+>> Macbook Pro: Both Python2 and 3
+>> Why: Linux runs on Python 2.7 in the background so it is what I am most used to interacting with
 
 ### Q2. Which Python Version Installed   
 
@@ -57,8 +59,8 @@ In the Terminal:
 
 `python3 --version`
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
-
+>> Lenovo Ideapad: Python2: 2.7.14 IPython: 5.4.1 Python3: 3.6.3 IPython3: 6.1.0 Jupyter notebook: 5.0.0
+>> Macbook Pro: Python2: 2.7.14 IPython: 5.4.1 Python3: 3.6.3 IPython3: 6.1.0 Jupyter notebook: 5.0.0
  
 
 
