@@ -126,7 +126,7 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 > > **More Listing: (as a note, I really don't like ever listing without the (l)ong argument - and generally write them into aliases)**  
 ls -r: list files/directories (r)everse alphabetical  
 ls -al | grep '^d' : list files/directories directories only  
-ls -i: list files/directories i(node)  
+ls -i: list files/directories (i)node  
 ls -m: list files/directories co(m)ma separated  
 ls -Q: list files/directories (Q)uote names in ""  
 ls -R: list files/directories (R)ecursively - going to be a big LS depending where you are in a filesystem  
@@ -148,9 +148,13 @@ Mostly useful with CLI commands that accept standard input (grep, awk, find, ech
 
 > > **examples:**
 echo a b c d | xargs -p # just going to echo a b c d if prompted by user  
-find . -name "*.py" | xargs rm -rf # find files in current directory and its subdirectories ending in .py and loop over removing them  
-find ./foo -type f -name "*.txt" | xargs rm # find files in current directories child foo and under ending in .txt and loop over removing them  
-find . -type f -name "*.md" | xargs wc -m -l # find files in current directory and its subdirectories that are a file and named ending in .md and loop over returning number of lines in each file, number of characters in each file and filename  
-find . -type f -name "*.md" | xargs grep "boom" find files in current directory and its subdirectories that are files with name ending in .md and search them for a match to word "boom" returning file name and the line(s) containing boom  
+find . -name "*.py" | xargs rm -rf  
+#find files in current directory and its subdirectories ending in .py and loop over removing them  
+find ./foo -type f -name "*.txt" | xargs rm  
+#find files in current directories child foo and under ending in .txt and loop over removing them  
+find . -type f -name "*.md" | xargs wc -m -l 
+#find files in current directory and its subdirectories that are a file and named ending in .md and loop over returning number of lines in each file, number of characters in each file and filename  
+find . -type f -name "*.md" | xargs grep "boom"  
+#find files in current directory and its subdirectories that are files with name ending in .md and search them for a match to word "boom" returning file name and the line(s) containing boom  
 
 ---
