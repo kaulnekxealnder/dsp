@@ -107,7 +107,7 @@ What do the following commands do:
 `ls -t`  
 `ls -Glp`  
 
-> > **What do these list directory commands do with their arguments: (*note these differ from Linux and Mac)**
+> > **What do these list directory commands do with their arguments: (note these differ from Linux and Mac)**  
 ls 		: list files/directories in the current directory  
 ls -a  	: list files/directories (a)ll options - so gets hidden files - in current directory  
 ls -l  	: list files/directories (l)ong - returns a long list, with each file/dir on a new line and extended information  
