@@ -96,11 +96,11 @@ Make a cheat sheet for yourself: a list of at least **ten** commands and what th
 `cron` : executes commands on a preset schedule by daemon (daemon is just a guy who always likes to run behind you)  
 ---
 
-### Q2.  List Files in Unix   
+### Q2.  List Files in Unix  
 
 What do the following commands do (note these differ from Linux and Mac):
 
-> >
+> > **ls:**  
 `ls`: list files/directories in the current directory  
 `ls -a`: list files/directories (a)ll options - so gets hidden files - in current directory  
 `ls -l`: list files/directories (l)ong - returns a long list, with each file/dir on a new line and extended information  
