@@ -114,7 +114,7 @@ What do the following commands do (note these differ from Linux and Mac):
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-> > **More Listing: (as a note, I really don't like ever listing without the (l)ong argument - and generally write them into aliases)**  
+> >
 `ls -r`: list files/directories (r)everse alphabetical  
 `ls -al | grep '^d'` : list files/directories directories only  
 `ls -i`: list files/directories (i)node  
@@ -130,10 +130,7 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 What does `xargs` do? Give an example of how to use it.
 
 > > **xargs:**  
-Builds and execute command lines from standard input - essentially a utility for building an execution pipeline from stdin - executes /bin/echo over input.  
-It is basically used to do some operations on a long(ish!?) list of filenames produced by the previous command(s).  
-If run empty on CLI will need to be executed with ctrl+d, can handle delimiters with -d, number of lines to split -n, and ask for user confirmation -p  
-Mostly useful with CLI commands that accept standard input (grep, awk, find, echo)  
+Builds and execute command lines from standard input - essentially a utility for building an execution pipeline from stdin - executes /bin/echo over input. It is basically used to do some operations on a long(ish!?) list of filenames produced by the previous command(s). If run empty on CLI will need to be executed with ctrl+d, can handle delimiters with -d, number of lines to split -n, and ask for user confirmation -p. Mostly useful with CLI commands that accept standard input (grep, awk, find, echo).  
 
 ---
 
