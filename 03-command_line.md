@@ -119,7 +119,7 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 Command  |  Action
 ------------ | -------------
 `ls -r` | list files/directories (r)everse alphabetical
-`ls -al PIPE grep '^d'` | list files/directories directories only (HELP ME THE \| operator was breaking my table)
+`ls -al \| grep '^d'` | list files/directories directories only
 `ls -i` | list files/directories (i)node  
 `ls -m` | list files/directories co(m)ma separated  
 `ls -Q` | list files/directories (Q)uote names in ""  
