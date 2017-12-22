@@ -20,80 +20,81 @@ Here's a list of items with which you should be familiar:
 
 Make a cheat sheet for yourself: a list of at least **ten** commands and what they do.  (Use the 8 items above and add a couple of your own.)  
 
-> > **List of Command Line Commands:**  
-`pwd` (or $PWD, or =+) : prints working directory (which is the current directory you are in)  
-`mkdir` (-p is useful) : makes new empty directory of your name choice (-p will make parent and children - can nest down)  
-`rmdir` : removes empty directories -rarely like using this (although dangerous rm -r works)  
-`touch` : creates a new file with the name you give it - although technically a file timestamp changer  
-`rm` : deletes files (-r recursive; -f force)  
-`rename` : renames a file(s) - given regex characteristics s(ubstitute)/patternin/patternout/[(g)lobal (i)case] filename(s)  
-`ls -a` : a argument lists all files/directories  
-`cp` : copy target1 --> target2 (can take arguments like most cli commands)  
-`wc` : wordcount  
-`mv` : moving files from one place to another  
-`echo` : print out command or input  
-`ping` : ICMP echo test for network hosts  
-`traceroute` : returns number of hops to a server from host machine  
-`ip` : show/manipulate routing (also ipstables)  
-`netstat` : print network connections, routing tables, stats  
-`nmap` : get a network mapping of a target  
-`ftp` : file transfer protocol (though unsecure)  
-`wget` : non-interactive network downloader  
-`curl` : transfer a url (data) to/from a server  
-`ssh` : secure shell (logins, transfers, remote controls)  
-`$HOME (~)` : returns home directory  
-`$PATH` : prints shell path traversal  
-`cat` : concantenate files/read files  
-`cut` : remove sections from each line of files  
-`paste` : merge lines of files  
-`join` : join lines of two files on a common field  
-`comm` : compare two sorted files line by line  
-`diff` : compare files line by line  
-`printf` : format and print data  
-`tr` : translate or delete characters  
-`sort` : sort lines of text  
-`uniq` : report or omit repeated lines  
-`nl` : number lines  
-`fold` : wrap each line to a specified length  
-`fmt` : simple text formater  
-`grep` : print line matching patterns (general regular expressions)  
-`sed` : stream line editor (challenging little beast)  
-`head` : output first part of a file (takes args)  
-`tail` : output last part of file  
-`tee` : read from stdin and write to stdout/files - while also showing in terminal  
-`id` : display user identity  
-`chmod` : change file modifications ((type)(owner permissions)(group permissions)(world permissions)  
-`su/sudo` : run as superuser/root  
-`chown` : change owner for files  
-`chgrp` : change files groups  
-`ps` : report process snapshots (useful with aux but doesnt take a (-) like tar, I don't know why....)  
-`top` : display tasks  
-`bg/fg` : place job in backgroup or foreground  
-`jobs` : list active jobs  
-`kill` : kill a single process (PID)  
-`killall` : kill processes by name  
-`shutdown` : shutdown/restart machine (usually use this with shutdown -r now)  
-`tree` : show tree of directories and files  
-`pstree` : show a tree of processes  
-`vmstat` : snapshot of system resource usage  
-`printenv` : print part or all of the environment of shell  
-`set` : set shell options and environment variables  
-`export` : export environment and subsuquently executed programs  
-`alias` : create an alias for a command (lost after shell quit - so is just a temporary alias)  
-`PS1=`(set your cli prompt)  
-`mount` : mount a file system  
-`umount` : unmount a file system  
-`fsck` : check and repair file system  
-`fdisk` : partition manipulator  
-`mkfs` : make file system  
-`dd` : STAY AWAY - write block (d)ata (d)irectly  
-`ifconfig` : show / configure network interface  
-`locate` : find files by name  
-`find` : search for files in a directory hierarchy (this one is a beast: has options, tests and actions)  
-`xargs` : build and execute command lines from standard input - essentially a utility for building an execution pipeline from stdin - executes /bin/echo over input  
-`xargs` - basically used to do some operations on a long(ish!?) list of filenames produced by the previous command; {} arg list marker if taking >1 arg at a time  
-`stat` : (file) display file or file system status  
-`cron` : executes commands on a preset schedule by daemon (daemon is just a guy who always likes to run behind you)  
+> > 
+**Command** | **What does it do**
+------------ | -------------
+`pwd` | (or $PWD, or =+) prints working directory (which is the current directory you are in)  
+`mkdir` | (-p is useful) makes new empty directory of your name choice (-p will make parent and children - can nest down)  
+`rmdir` | removes empty directories -rarely like using this (although dangerous rm -r works)  
+`touch` | creates a new file with the name you give it - although technically a file timestamp changer  
+`rm` | deletes files (-r recursive; -f force)  
+`rename` | renames a file(s) - given regex characteristics s(ubstitute)/patternin/patternout/[(g)lobal (i)case] filename(s)  
+`ls -a` | a argument lists all files/directories  
+`cp` | copy target1 --> target2 (can take arguments like most cli commands)  
+`wc` | wordcount  
+`mv` | moving files from one place to another  
+`echo` | print out command or input  
+`ping` | ICMP echo test for network hosts  
+`traceroute` | returns number of hops to a server from host machine  
+`ip` | show/manipulate routing (also ipstables)  
+`netstat` | print network connections, routing tables, stats  
+`nmap` | get a network mapping of a target  
+`ftp` | file transfer protocol (though unsecure)  
+`wget` | non-interactive network downloader  
+`curl` | transfer a url (data) to/from a server  
+`ssh` | secure shell (logins, transfers, remote controls)  
+`$HOME (~)` | returns home directory  
+`$PATH` | prints shell path traversal  
+`cat` | concantenate files/read files  
+`cut` | remove sections from each line of files  
+`paste` | merge lines of files  
+`join` | join lines of two files on a common field  
+`comm` | compare two sorted files line by line  
+`diff` | compare files line by line  
+`printf` | format and print data  
+`tr` | translate or delete characters  
+`sort` | sort lines of text  
+`uniq` | report or omit repeated lines  
+`nl` | number lines  
+`fold` | wrap each line to a specified length  
+`fmt` | simple text formater  
+`grep` | print line matching patterns (general regular expressions)  
+`sed` | stream line editor (challenging little beast)  
+`head` | output first part of a file (takes args)  
+`tail` | output last part of file  
+`tee` | read from stdin and write to stdout/files - while also showing in terminal  
+`id` | display user identity  
+`chmod` | change file modifications ((type)(owner permissions)(group permissions)(world permissions)  
+`su/sudo` | run as superuser/root  
+`chown` | change owner for files  
+`chgrp` | change files groups  
+`ps` | report process snapshots (useful with aux but doesnt take a (-) like tar, I don't know why....)  
+`top` | display tasks  
+`bg/fg` | place job in backgroup or foreground  
+`jobs` | list active jobs  
+`kill` | kill a single process (PID)  
+`killall` | kill processes by name  
+`shutdown` | shutdown/restart machine (usually use this with shutdown -r now)  
+`tree` | show tree of directories and files  
+`pstree` | show a tree of processes  
+`vmstat` | snapshot of system resource usage  
+`printenv` | print part or all of the environment of shell  
+`set` | set shell options and environment variables  
+`export` | export environment and subsuquently executed programs  
+`alias` | create an alias for a command (lost after shell quit - so is just a temporary alias)  
+`PS1=` | (set your cli prompt)  
+`mount` | mount a file system  
+`umount` | unmount a file system  
+`fsck` | check and repair file system  
+`fdisk` | partition manipulator  
+`mkfs` | make file system  
+`dd` | STAY AWAY - write block (d)ata (d)irectly  
+`ifconfig` | show / configure network interface  
+`locate` | find files by name  
+`find` | search for files in a directory hierarchy (this one is a beast: has options, tests and actions)  
+`xargs` | build and execute command lines from standard input - essentially a utility for building an execution pipeline from stdin - executes /bin/echo over input  
+`stat` | (file) display file or file system status  
+`cron` | executes commands on a preset schedule by daemon (daemon is just a guy who always likes to run behind you)  
 ---
 
 ### Q2.  List Files in Unix  
