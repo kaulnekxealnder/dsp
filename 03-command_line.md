@@ -116,14 +116,16 @@ What do the following commands do (note these differ from Linux and Mac):
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
 > >
-`ls -r`: list files/directories (r)everse alphabetical  
-`ls -al | grep '^d'` : list files/directories directories only  
-`ls -i`: list files/directories (i)node  
-`ls -m`: list files/directories co(m)ma separated  
-`ls -Q`: list files/directories (Q)uote names in ""  
-`ls -R`: list files/directories (R)ecursively - going to be a big LS depending where you are in a filesystem  
-`ls -s`: list files/directories (s)ize  
-`ls -1`: list files/directories (1) file per line - good if you want a vertical list of some other combination of the hierarchy  
+Command  |  Action
+------------ | -------------
+`ls -r` | list files/directories (r)everse alphabetical
+`ls -al | grep '^d'` | list files/directories directories only  
+`ls -i` | list files/directories (i)node  
+`ls -m` | list files/directories co(m)ma separated  
+`ls -Q` | list files/directories (Q)uote names in ""  
+`ls -R` | list files/directories (R)ecursively - going to be a big LS depending where you are in a filesystem  
+`ls -s` | list files/directories (s)ize  
+`ls -1` | list files/directories (1) file per line - good if you want a vertical list of some other combination of the hierarchy  
 
 ---
 
