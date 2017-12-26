@@ -13,7 +13,7 @@ Bubble Sort |	O(1) |	O(n) |	O(n2) |	O(n2)
 ---
 
 Data Structures | Search | Insert | Delete | Search | Insert | Delete
------------- | ------------- | ------------ | ------------- | ------------- | -------------
+------------ | ------------- | ------------ | ------------- | ------------- | ------------- | -------------
 Array	| O(n) |	N/A |	N/A |	O(n) |	N/A |	N/A
 Sorted Array |	O(log n) |	O(n) |	O(n) |	O(log n) |	O(n) |	O(n)
 Linked List |	O(n) |	O(1) |	O(1) |	O(n) |	O(1) |	O(1)
