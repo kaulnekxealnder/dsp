@@ -12,7 +12,6 @@ Bubble Sort |	O(1) |	O(n) |	O(n2) |	O(n2)
 
 ---
 Data Structures | Average Case | Worst Case
-------------- | ------------- | -------------
 Data Structures | Search | Insert | Delete | Search | Insert | Delete
 ------------ | ------------- | ------------ | ------------- | ------------- | -------------
 Array	O(n)	N/A	N/A	O(n)	N/A	N/A
