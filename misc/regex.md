@@ -2,7 +2,7 @@
 ---
 Identifiers | Modifiers | White Space Characters | Escape Required
 ------------ | ------------- | ------------ | -------------
-`\d` any number (a digit) | `\d` represents a digit ie(\d{1,9} will declare a digit between 1 and 9 | `\n` new line | `.` `+` `*` `?` `[]` `$` `^` `()` `{}` `|` `\`
+`\d` any number (a digit) | `\d` represents a digit ie(\d{1,9} will declare a digit between 1 and 9 | `\n` new line | `.` `+` `*` `?` `[]` `$` `^` `()` `{}` `\|` `\\`
 `\D` anything but a number (NOT DIGIT) | `+` matches 1 or more | `\s` space | 
 `\s` space (tab, space, newline, etc) | `?` matches 0 or 1 | `\t` tab | 
 `\S` anything but space (NOT SPACE) | `*` matches 0 or more | `e` escape | 
