@@ -34,6 +34,17 @@ Characters | What they do | Flags
 `OR` | `A OR B`, where A and B can be arbitrary REs, creates a REGEX that will match either A or B.  These can be used inside groups.  As scanned RE's are tried left to right.  Once one pattern completely matches, that branch is accepted and no further testing is completed | 
 
 ---
+
+---
+**GROUPS GROUPS GROUPS*** | What do they do/allow you to do | Example(s)
+---------------------- | --------------------- | --------------------------
+`Match Groups` | Allow us to not just match text, but also to extract information for further processing.  This is done by defining **groups of characters** and capturing them using the special `( and )` metacharacters.  Any subpattern inside a pair of parentheses is captured as a group. | `^(IMG\d+\.png)$` captures anything starting with IMG followed by at least 1 or more digits ending in `.png` or `(\w+)\.py)$` find alls files using alpha numerics that end in `.py` 
+`Nested Match Groups` | Good for complex data where you need to extract multiple layers of information.  Generally, the results of capturedgroups are in the order in which they are defined (in order by open parenthesis). | `(\w+\s(\d+))` or `(\w+ (\d+))` or `(\w+\W(\d+))` test for alphanumerics followed by white space followed by digits and captures the whole string match and digits as two different groups
+`*` `+` `{m,n}` `?` | Are all quantifiers that can be used in capture groups.  This is the only way to apply quantifiers on sequences of characters instead of the individual characters themselves. Some platforms allow for **NONCAPTURING** groups which will allow you to match the group but not show up in the results | `(\d{3})?` would test area codes
+`Its All Condtional` | When using groups, you can use the `pipe` (logical OR) to denote different possible sets of characters.  You can use any sequence of characters or metacharacters in a group. | `I love (cats|dogs)` matchs only I love cats and I love dogs
+
+---
+
 Extension Notation | What it means 
 ----------- | --------------
 `(...)` | Matches whatever RE is inside the parentheses, and indicates the start and end of a **group**.  The contents of a group can be retrieved after a match has been performed and can be matched later in the string with the `\number` special sequence.  To match `(` or `)` as literals you must escape `\(` `\)` or enclose in a class `[(]` `[)]` 
@@ -62,3 +73,41 @@ RE Module Contents (.re) | What it does
 `re.finditer(pattern, string, flags=0)` | Return an *iterator* yielding match objects over all non-overlapping matches for the RE pattern in string. The string is scanned left-to-right, and matches are returned in the order found. Empty matches are included in the result unless they touch the beginning of another match.
 `re.sub(pattern, repl, string, count=0, flags=0)` | Return the string obtained by replacing the leftmost non-overlapping occurrences of *pattern* in string by the replacement `repl`.  If the pattern isn't found, string is returned unchanged. `repl` can be a string or a function; if a string, any backslash escapes in it are processed (ie `\n` is converted to newline).  If `repl` is a function, it is called for every non-overlapping occurrence of *pattern*.  The function takes a single match objet argument and returns the replacement string.  Optional argument `count` is the maximum number of pattern occurences to be replaced and must be a non-negative integer.  If omitted or 0, all instances will be replaced.
 `re.subn(patteren, repl, string, count=0, flags=0)` | Perform the same operation as `sub()`, but return a `tuple(new_string, number_of_subs_made)`
+`re.escape(pattern)` |  Escape all the characters in pattern except ASCII letters, numbers and `_`. This is useful if you want to match an arbitrary literal string that may have regular expression metacharacters in it.
+
+---
+
+Regular Expression Objects | What they do
+------------------------ | ---------------------
+`regex.search(string[, pos[, endpos]])` | Scan through a string looking for the first location where this regular expression produces a match, and return a corresponding `match object`.  Return `None` if no position in the string matches the pattern; not this is different from finding a zero length match at some point in the string.  The second parameter `pos` gives an index in the string where the search is to start; defaulting to `0`.  The `^` pattern character matches the real beginning of the string and at postions just after a newline, but not necessarily at the index where the search is to start.  The option parameter `endpos` limits how far the string will be searched; it will be as if the string is `endpos` characters long; so only characters from `pos` to `endpos - 1` will be search for a match.
+`regex.match(string[, pos[, endpos]])` | If zero or more characters at the *beginning of string match* this regular expression, return a single corresponding `match object`.  Return `None` if the string does not match the pattern; this is different from a zero-length match.  `pos` and `endpos` work the same as in search.  This is for matching anywhere in a string.
+`regex.fullmatch(string[,pos[,endpos]])` | If the whole string matches this regular expression, return a corresponding `match object`.  Return `None` if the string doesn't match the pattern.  Optional `pos` and `endpos`.
+`regex.split(string, maxsplit=0)` | Identical to the `split()` function, using the compiled pattern
+`regex.findall(string[,pos[,endpos]])` | Similar to the `findall()` function, using the compiled pattern, but also accepts optional `pos` and `endpos` parameters that limit the search regions
+`regex.finditer(string[, pos[, endpos]])` | Similar to the `finditer()` function, using the compiled pattern, but also accepts optional `pos` and `endpos` parameters that limit the search region
+`regex.sub(repl, string, count=0)` | Identical to the `sub()` function, using the compiled pattern.
+`regex.subn(repl, string, count=0)` | Identical to the `subn()` function, using the compiled pattern.
+`regex.groups` | The number of capturing groups in the pattern
+`regex.groupindex` | A dictionary mapping any symbolic group names defined by `(?P<id>)` to group numbers. The dictionary is empty if no symbolic groups were used in the pattern.
+`regex.pattern` | The pattern string from which the RE object was compiled
+
+---
+
+Regular Expression Match Objects | What they do (since match objects always have a boolean value of `True` and `None` if no matches
+-------------------------- | -----------------------------
+`match.expand(template)` | Return the string obtained doing backslash substitution on the template string `template`, as done by `sub()` method.  Escapes are converted, and numeric backreferences `(\1, \2)` and named backreferences `(\g<1>, \g<name>)` are replaced by the contents of the corresponding group
+`match.group([group1, ...])` | Returns one or more subgroups of the match. If there is a single argument, the result is a single string; if there are multiple arguments, the result is a tuple with one item per argument. Without arguments, group1 defaults to zero (the whole match is returned). If a groupN argument is zero, the corresponding return value is the entire matching string; if it is in the inclusive range [1..99], it is the string matching the corresponding parenthesized group. If a group number is negative or larger than the number of groups defined in the pattern, an IndexError exception is raised. If a group is contained in a part of the pattern that did not match, the corresponding result is None. If a group is contained in a part of the pattern that matched multiple times, the last match is returned. Names groups can be refered to by their index.  If group matches multiple times, only the last match is accessible.
+`match.__getitem__(g)` | This is identical to m.group(g) 
+`match.groups(default=None)` | Return a tuple containing all the subgroups of the match, from 1 up to however many groups are in the pattern.  The *default* argument is used for groups that didn't participate in the match, it defaults to `None`
+`match.groupdict(default=None)` | Return a dictionary containing all the `named` subgroups of the match, keyed by the subgroup name.  The default argument is used for groups that didn't participate in the match and defaults to `None`
+`match.start([group])` | 
+`match.end([group])` | Return the indices of the start and end of the substring matched by group; group defaults to zero (meaning the whole matched substring). Return `-1` if group exists but did not contribute to the match. 
+`match.span([group])` | For a match `m`, return the 2-tuple `(m.start(group), m.end(group))`. Note that if group did not contribute to the match, this is `(-1, -1)`. group defaults to zero, the entire match.
+`match.pos` | The value of pos which was passed to the `search()` or `match()` method of a regex object. This is the index into the string at which the RE engine started looking for a match.
+`match.endpos` | The value of `endpos` which was passed to the `search()` or `match()` method of a regex object. This is the index into the string beyond which the RE engine will not go.
+`match.lastindex` | The integer index of the last matched capturing group, or `None` if no group was matched at all. For example, the expressions `(a)b`, `((a)(b))`, and `((ab))` will have `lastindex == 1` if applied to the string `'ab'`, while the expression `(a)(b)` will have `lastindex == 2`, if applied to the same string.
+`match.lastgroup` | The name of the last matched capturing group, or `None` if the group didn’t have a name, or if no group was matched at all.
+`match.re` | The regular expression object whose `match()` or `search()` method produced this match instance
+`match.string` | The string passed to `match()` or `search()`
+
+---
