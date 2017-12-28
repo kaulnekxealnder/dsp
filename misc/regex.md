@@ -36,12 +36,12 @@ Characters | What they do | Flags
 ---
 
 ---
-**GROUPS GROUPS GROUPS*** | What do they do/allow you to do | Example(s)
+**GROUPS GROUPS GROUPS** | What do they do/allow you to do | Example(s)
 ---------------------- | --------------------- | --------------------------
 `Match Groups` | Allow us to not just match text, but also to extract information for further processing.  This is done by defining **groups of characters** and capturing them using the special `( and )` metacharacters.  Any subpattern inside a pair of parentheses is captured as a group. | `^(IMG\d+\.png)$` captures anything starting with IMG followed by at least 1 or more digits ending in `.png` or `(\w+)\.py)$` find alls files using alpha numerics that end in `.py` 
 `Nested Match Groups` | Good for complex data where you need to extract multiple layers of information.  Generally, the results of capturedgroups are in the order in which they are defined (in order by open parenthesis). | `(\w+\s(\d+))` or `(\w+ (\d+))` or `(\w+\W(\d+))` test for alphanumerics followed by white space followed by digits and captures the whole string match and digits as two different groups
 `*` `+` `{m,n}` `?` | Are all quantifiers that can be used in capture groups.  This is the only way to apply quantifiers on sequences of characters instead of the individual characters themselves. Some platforms allow for **NONCAPTURING** groups which will allow you to match the group but not show up in the results | `(\d{3})?` would test area codes
-`Its All Condtional` | When using groups, you can use the `pipe` (logical OR) to denote different possible sets of characters.  You can use any sequence of characters or metacharacters in a group. | `I love (cats|dogs)` matchs only I love cats and I love dogs
+`Its All Condtional` | When using groups, you can use the `pipe` (logical OR) to denote different possible sets of characters.  You can use any sequence of characters or metacharacters in a group. | `I love (cats\|dogs)` matchs only I love cats and I love dogs
 
 ---
 
