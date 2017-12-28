@@ -9,7 +9,44 @@ Identifiers | Modifiers | White Space Characters | Escape Required
 `\w` letters (matching alphanumeric; including "_" | `$` matches end of a string | `\r` carriage return | 
 `\W` anything but letters (NOT ALPHANUMERIC) | `^` matches start of a string | `\f` form feed | 
 `.` anything but letters (periods) | `\|` matches either or x/y | | 
-`\b` any characters except for new line | `[]` matches a range or variance | | 
+`\b` any characters except for new line; thus matches the empty string, but only at the beginning or end of a word | `[]` matches a range or variance | | 
 `\.` | `{x}` matches x amount of preceding code | | 
+`\number` matches the contents of the group of the same numbers.  Groups are numbered starting at 1. | | |
+`\A` matches only the start of the string | | | 
+`\Z` matches only at the end of a string | | | 
+`\B` matches the empty string, but only when it is *not* at the beginning or end of a word | | | 
+
+---
+Characters | What they do | Flags
+------------ | ------------- | ------------ 
+`.` | In default mode, matches any character except a newline | `DOTALL` matches any character including newline
+`^` | Matches the start of a string | `MULTILINE` also matches immediately after each newline
+`$` | Matches the end of the string or just before the newline at end of the string | `MULTILINE` also matches before a newline
+`*` | Causes the resulting RE to match 0 or more repetitions of preceding RE (as many as possible) | 
+`+` | Causes the resulting RE to match 1 or more repetitions of preceding RE | 
+`?` | Causes the resulting RE to match 0 or 1 repetitions of the preceding RE | 
+`*?` `+?` `??` | the `*` `+` and `?` qualifiers are all greedy; they match as much text as possible but adding the `?` after a greedy qualifier makes it non-greedy | 
+`{m}` | Specifies that exactly `m` copies of the previous RE should be matched; fewer matches cause the entire RE to not match (ie `a{6}` will match exactly six `a` characters | 
+`{m,n}` | Causes the resulting RE to match from `m` to `n` repetitions of the preceding RE, attempting to match as many as possible (ie `a{3,5}` will match from 3 to 5 `a` characters).  Omitting `m` specifies a lower bound of zero, and omitting `n` specifies an infinite upper bound (ie `a{4,}b` will match `aaaab` or a thousand `a` characters followed by a `b` but not `aaab`.  The comma may not be omitted | 
+`{m,n}?` | Causes the resulting RE to match from `m` to `n` repetitions of the preceding RE, attempting to match as few repetitions as possible.  This is the non-greedy version of the previous qualifier.  For example, on the 6-character string `aaaaaa`, `a{3,5}` will match 5 `a` characters while `a{3,5}?` will only match 3 characters | 
+`\` | Either escapes special characters (`*`, `?`, etc) or signals a **special sequence** | 
+`[]` | Used to indicate character sets.  Characters can be listed individually (ie `[amk]` will match `a`, `m`, or `k`).  Ranges of characters can be indicated by giving to characters and separating them with a `-` (ie `[a-z]` matches any lowercase ASCII, or `[0-5][0-9]` will match all the two digit numbers from `00` to `59`). If `-` is escaped (ie `[a\-z]`) or if it is placed as the first or last character (ie `[-a]` or `[a-]` it will match a literal **-**.  Special characters lose their special meaning inside sets (ie `[(+*)]` will match literal characters `(`, `+`, `*` or `)`.  Character classes (ie `\w`) are also accepted in sets.  Characters that are not within a range cab be matched by __complimenting__ the set.  If the first character of a set is `^`, all the characters that are **not** in the set will be matched (ie `[^5]` will match any character except `5`.  To match a literal `]` inside a set, precede it with a backslash or place it at the beginning of the set (ie `[()[\]{}]` and `[]()[{}]`) will both match parenthesis | 
+`OR` | `A OR B`, where A and B can be arbitrary REs, creates a REGEX that will match either A or B.  These can be used inside groups.  As scanned RE's are tried left to right.  Once one pattern completely matches, that branch is accepted and no further testing is completed | 
+
+---
+Extension Notation | What it means 
+----------- | --------------
+`(...)` | Matches whatever RE is inside the parentheses, and indicates the start and end of a **group**.  The contents of a group can be retrieved after a match has been performed and can be matched later in the string with the `\number` special sequence.  To match `(` or `)` as literals you must escape `\(` `\)` or enclose in a class `[(]` `[)]` 
+`(?...)` | This is an extension notation (a `?` following a `(` isn't meaningful otherwise).  The first character after the `?` determines what the meaning and further syntax of the construct is. Extensions don't usually create a new group (except for `(?P<name>...)`
+`(?aiLmsux)` | One or more letters from the set `a`, `i`, `L`, `m`, `s`, `u`, `x`.  The group matches the empty string; the letters set the corresponding flags: `re.A` ASCII-only matching, `re.I` Ignore case, `re.L` Locale dependent, `re.M` Multiline, `re.S` Dot matches all, `re.U` Unicode matching, and `re.X` Verbose - these match for the entire REGEX.  These are useful when you want to pass a flag as part of the RE instead of passing a flag argument to `re.compile()`.  Flags should be used *first* in the expression string
+`(?:...)` | A non-capturing version of regular parentheses.  Matches whatever RE is inside the parentheses, but the substring matched by the group *cannot* be retrieved after performing a match or reference later in a pattern 
+`(?imsx-imsx)` | Zero or more letters from the set `i`, `m`, `s`, `x`, optionally followed by `-` followed by one ore more letters from the same set.  These either set or remove the corresponding flags, for part of the expression 
+`(?P<name>...)` | Similar to regular parentheses, but the substring matched by the group is accessible via the symbolic group name ***name***.  Group names must be valid Python identifiers, and each group name must be defined only once within a REGEX.  A symbolic group is also a numbered group, just as if the group were not named. 
+`(?P=name)` | A backreference to a named group; it matches whatever text was matched by the earlier group named ***name***
+`(?#...)` | A comment; the contents of the parentheses are simply ignored
+`(?=...)` | Matches if `...` matches next, but doesn't consume any of the string.  This is called a *lookahead assertion*. (ie `Isaac (?=Asimov)` will match `Isaac` only if its followed by an `Asimov`
+`(?!...)` | Matches if `...` doesn't match next.  This is a *negative lookahead assertion*. (ie `Isaac (?!Asimov)` will match `Isaac` only if it's not followed by `Asimov`
+`(?<=...)` | Matches if the current position in the string is preceded by a match for `...` that ends at the current position.  This is called a *positive lookbehind assertion*. `(?<=abc)def` will find a match in `abdcef`, since the lookbehind will back up 3 characters and check if the contained patter matches  The contained pattern must only match strings of some fixed length. 
+`(?<!...)` | Matches if the current position in the string is *not* preceded by a match for `...`.  This is called a *negative lookbehind assertion*
 
 ---
