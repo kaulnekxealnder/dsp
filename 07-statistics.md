@@ -88,9 +88,7 @@ Elvis Presley had a twin brother who died at birth.  What is the probability tha
 
 >> 
 **Bayes Theorem:**
-$$
-\mathbf{P(H|D)} = \frac{P(H) P(D|H)}{P(D)}
-$$
+$$\mathbf{P(H|D)} = \frac{P(H) P(D|H)}{P(D)}$$
 
 **P(H)** = The probability of the hypotheses before we see the data, called the prior probability; **prior**
 
