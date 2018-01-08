@@ -128,6 +128,7 @@ $$
 P(H|D) = \frac{1/2 * 1/300}{1/4 * 1/125 + 1/2 * 1/300} = 5/11
 $$
 
+
 ---
 
 ### Q6. Bayesian &amp; Frequentist Comparison  
